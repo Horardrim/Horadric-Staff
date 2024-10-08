@@ -1,0 +1,30 @@
+name: Horadric-Staff Pull Request Checking
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+
+      - name: Set up Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          maven-version: 3.8.4
+
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: mvn clean package
+
+      - name: Run tests
+        run: mvn test
