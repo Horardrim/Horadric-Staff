@@ -4,7 +4,7 @@
   <groupId>com.horadrim</groupId>
   <artifactId>Horadric-Staff</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.1.0</version>
   <name>horadrim-java-demo</name>
   <dependencies>
     <dependency>
