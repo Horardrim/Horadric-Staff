@@ -42,7 +42,31 @@ public class SegmentTree {
         pushUp(base);
     }
 
+    public int singleUpdate(int index, int value) {
+        if (index < 0 || index > this.size - 1) {
+            return 1;
+        }
+        singleUpdate(index, value, 0, this.size - 1, BASE);
+        return 0;
+    }
+
+    private void singleUpdate(int index, int value, int start, int end, int base) {
+        if (start == end) {
+            tree[base] = value;
+            return;
+        }
+
+        int mid = (end - start) / 2 + start;
+        if (index <= mid) {
+            singleUpdate(index, value, start, mid, base << 1);
+        } else {
+            singleUpdate(index, value, mid + 1, end, base << 1 | 1);
+        }
+
+        pushUp(base);
+    }
+
     private void pushUp(int base) {
-        tree[base] = tree[2 * base] + tree[2 * base + 1];
+        tree[base] = tree[base << 1] + tree[base << 1 | 1];
     }
 }
