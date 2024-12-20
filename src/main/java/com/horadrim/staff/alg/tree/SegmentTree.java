@@ -59,15 +59,16 @@ public class SegmentTree {
     private void updateByInterval(int base, int leftIndex, int rightIndex, int leftBoundary, int rightBoundary, int value) {
         if (leftIndex <= leftBoundary && rightIndex >= rightBoundary) {
             mark[base] += value;
-            tree[base] += value * (rightIndex - leftIndex + 1);
+            tree[base] += value * (rightBoundary - leftBoundary + 1);
             return;
         }
 
-        pushDown(base, rightIndex - leftIndex + 1);
+        pushDown(base, rightBoundary - leftBoundary + 1);
         int m = (rightBoundary - leftBoundary) >> 1 + leftBoundary;
         if (leftIndex <= m) {
             updateByInterval(base << 1, leftIndex, rightIndex, leftBoundary, m, value);
-        } else if (m < rightIndex) {
+        }
+        if (m < rightIndex) {
             updateByInterval(base << 1 | 1, leftIndex, rightIndex, m + 1, rightBoundary, value);
         }
         pushUp(base);
