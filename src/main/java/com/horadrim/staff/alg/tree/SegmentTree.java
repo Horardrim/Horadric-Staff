@@ -8,6 +8,8 @@ public class SegmentTree {
 
     private int[] tree;
 
+    private int[] mark;
+
     public SegmentTree(int[] nums) {
         this.size = nums.length;
         if (this.size <= 0) {
@@ -15,6 +17,7 @@ public class SegmentTree {
         }
         
         tree = new int[4 * size];
+        mark = new int[4 * size];
         build(nums, 0, size - 1, BASE);
     }
 
@@ -42,12 +45,32 @@ public class SegmentTree {
         pushUp(base);
     }
 
-    public int singleUpdate(int index, int value) {
+    public void singleUpdate(int index, int value) {
         if (index < 0 || index > this.size - 1) {
-            return 1;
+            return;
         }
         singleUpdate(index, value, 0, this.size - 1, BASE);
-        return 0;
+    }
+
+    public void updateByInterval(int leftIndex, int rightIndex, int leftBoundary, int rightBoundary, int value) {
+        updateByInterval(BASE, leftIndex, rightIndex, leftBoundary, rightBoundary, value);
+    }
+
+    private void updateByInterval(int base, int leftIndex, int rightIndex, int leftBoundary, int rightBoundary, int value) {
+        if (leftIndex <= leftBoundary && rightIndex >= rightBoundary) {
+            mark[base] += value;
+            tree[base] += value * (rightIndex - leftIndex + 1);
+            return;
+        }
+
+        pushDown(base, rightIndex - leftIndex + 1);
+        int m = (rightBoundary - leftBoundary) >> 1 + leftBoundary;
+        if (leftIndex <= m) {
+            updateByInterval(base << 1, leftIndex, rightIndex, leftBoundary, m, value);
+        } else if (m < rightIndex) {
+            updateByInterval(base << 1 | 1, leftIndex, rightIndex, m + 1, rightBoundary, value);
+        }
+        pushUp(base);
     }
 
     private void singleUpdate(int index, int value, int start, int end, int base) {
@@ -64,6 +87,16 @@ public class SegmentTree {
         }
 
         pushUp(base);
+    }
+
+    private void pushDown(int base, int m) {
+        if (mark[base] != 0) {
+            mark[base << 1] += mark[base];
+            mark[base << 1 | 1] += mark[base];
+            tree[base << 1] += mark[base] * (m - (m >> 1));
+            tree[base << 1 | 1] += mark[base] * (m >> 1);
+            mark[base] = 0;
+        }
     }
 
     private void pushUp(int base) {
