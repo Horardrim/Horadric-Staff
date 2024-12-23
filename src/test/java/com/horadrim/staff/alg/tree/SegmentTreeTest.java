@@ -51,6 +51,10 @@ public class SegmentTreeTest {
     @Test
     public void updateByInterval_happy_case() {
         SegmentTree testSegTree = new SegmentTree(updateByIntervalArray);
+        int base = 3;
         testSegTree.updateByInterval(1, 3, 0, 5, 1);
+        Assertions.assertTrue(testSegTree.getFromTreeWithIndex(base) ==
+            testSegTree.getFromTreeWithIndex(base << 1) + testSegTree.getFromTreeWithIndex((base << 1) + 1));
+        Assertions.assertTrue(testSegTree.getFromTreeWithIndex(9) == 3);
     }
 }
