@@ -64,7 +64,7 @@ public class SegmentTree {
         }
 
         pushDown(base, rightBoundary - leftBoundary + 1);
-        int m = (rightBoundary - leftBoundary) >> 1 + leftBoundary;
+        int m = (rightBoundary - leftBoundary) / 2 + leftBoundary;
         if (leftIndex <= m) {
             updateByInterval(base << 1, leftIndex, rightIndex, leftBoundary, m, value);
         }
