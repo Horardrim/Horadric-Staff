@@ -57,4 +57,18 @@ public class SegmentTreeTest {
             testSegTree.getFromTreeWithIndex(base << 1) + testSegTree.getFromTreeWithIndex((base << 1) + 1));
         Assertions.assertTrue(testSegTree.getFromTreeWithIndex(9) == 3);
     }
+
+    @Test
+    public void query_by_interval_happy_case() {
+        SegmentTree testSegTree = new SegmentTree(happyCaseArray);
+        int result = testSegTree.query(0, happyCaseArray.length - 1, 1, 3);
+        Assertions.assertTrue(result == 9);
+    }
+
+    @Test
+    public void query_by_single_happy_case() {
+        SegmentTree testSegTree = new SegmentTree(happyCaseArray);
+        int result = testSegTree.query(0, happyCaseArray.length - 1, 1);
+        Assertions.assertTrue(result == 2);
+    }
 }

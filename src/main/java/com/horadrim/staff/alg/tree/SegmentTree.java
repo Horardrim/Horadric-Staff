@@ -1,5 +1,10 @@
 package com.horadrim.staff.alg.tree;
 
+
+/*
+ * This class current does not handle some exception like left index is greater than right index
+ * Left index or right index is beyond the boundary. I only tested happy cases for the implement of segment tree.
+ */
 public class SegmentTree {
 
     private static final int BASE = 1;
@@ -54,6 +59,32 @@ public class SegmentTree {
 
     public void updateByInterval(int leftIndex, int rightIndex, int leftBoundary, int rightBoundary, int value) {
         updateByInterval(BASE, leftIndex, rightIndex, leftBoundary, rightBoundary, value);
+    }
+
+    public int query(int leftBoundary, int rightBoundary, int leftIndex, int rightIndex) {
+        return query( leftBoundary, rightBoundary, leftIndex, rightIndex, BASE);
+    }
+
+    public int query(int leftBoundary, int rightBoundary, int index) {
+        return query( leftBoundary, rightBoundary, index, index, BASE);
+    }
+
+    private int query(int leftBoundary, int rightBoundary, int leftIndex, int rightIndex, int base) {
+        if (leftBoundary >= leftIndex && rightIndex >= rightBoundary) {
+            return tree[base];
+        }
+
+        int m = (rightBoundary - leftBoundary) / 2 + leftBoundary;
+        int ret = 0;
+        if (leftIndex <= m) {
+            ret += query(leftBoundary, m, leftIndex, rightIndex, base << 1);
+        }
+
+        if (rightIndex > m) {
+            ret += query(m + 1, rightBoundary, leftIndex, rightIndex, base << 1 | 1);
+        }
+
+        return ret;
     }
 
     private void updateByInterval(int base, int leftIndex, int rightIndex, int leftBoundary, int rightBoundary, int value) {
