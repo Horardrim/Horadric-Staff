@@ -3,14 +3,11 @@ package com.horadrim.staff.leetcode;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.Test;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ExtendWith(MockitoExtension.class)
 public class MaximumSubarrayTest {
 
     @Test
