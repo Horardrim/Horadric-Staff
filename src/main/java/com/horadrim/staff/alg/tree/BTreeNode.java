@@ -27,6 +27,7 @@ public class BTreeNode {
      * 构造一棵空的B-树
      */
     private BTreeNode() {
+        this.M = 3;
         this.values = new LinkedList<Integer>();
         this.children = new LinkedList<BTreeNode>();
     }
