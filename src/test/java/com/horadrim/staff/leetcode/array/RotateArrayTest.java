@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode;
+package com.horadrim.staff.leetcode.array;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

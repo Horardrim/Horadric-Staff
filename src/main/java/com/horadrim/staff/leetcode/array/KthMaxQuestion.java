@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode;
+package com.horadrim.staff.leetcode.array;
 
 public class KthMaxQuestion {
     public Integer solution(int nums[], int k) {
