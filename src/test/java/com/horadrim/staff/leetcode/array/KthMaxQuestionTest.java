@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode;
+package com.horadrim.staff.leetcode.array;
 
 import java.util.Objects;
 
