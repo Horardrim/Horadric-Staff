@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode.dp;
+package com.horadrim.staff.ltcd.dp;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode.dp;
+package com.horadrim.staff.ltcd.dp;
 
 public class HouseRobber {
     public int solution(int[] houses) {

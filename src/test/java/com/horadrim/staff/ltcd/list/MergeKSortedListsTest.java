@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode.list;
+package com.horadrim.staff.ltcd.list;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode.array;
+package com.horadrim.staff.ltcd.array;
 
 import java.util.List;
 

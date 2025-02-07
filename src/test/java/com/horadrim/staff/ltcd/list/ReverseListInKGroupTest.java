@@ -1,11 +1,11 @@
-package com.horadrim.staff.leetcode.list;
+package com.horadrim.staff.ltcd.list;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import lombok.extern.slf4j.Slf4j;
-
 import com.horadrim.staff.utils.SimpleList;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ReverseListInKGroupTest {

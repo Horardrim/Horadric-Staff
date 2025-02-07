@@ -1,4 +1,4 @@
-package com.horadrim.staff.leetcode.list;
+package com.horadrim.staff.ltcd.list;
 
 public class MergeKSortedLists {
     
