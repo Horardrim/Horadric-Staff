@@ -42,14 +42,11 @@ public class ReverseNumberTest {
         Assertions.assertEquals(result, -321);
     }
 
-    /*
-     * 此测试用例用于测试反转后的数字over flow，但是现在无法判断
-     * 某些数字如1341234129
-     */
-    // @Test
-    // public void overFlowNumberTest() {
-    //     ReverseNumber n = new ReverseNumber();
-    //     int result = n.solution(1341234129);
-    //     Assertions.assertEquals(result, 0);
-    // }
+    @Test
+    public void overFlowNumberTest() {
+        ReverseNumber n = new ReverseNumber();
+        log.info(String.valueOf(Integer.MAX_VALUE / 10));
+        int result = n.solution(1341234129);
+        Assertions.assertEquals(result, 0);
+    }
 }

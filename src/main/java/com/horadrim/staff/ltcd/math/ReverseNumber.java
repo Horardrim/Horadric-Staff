@@ -10,11 +10,15 @@ public class ReverseNumber {
 
     private int reverse(int num) {
         int result = 0;
-        while (num / 10 != 0) {
+        while (num != 0) {
+            if (result < Integer.MIN_VALUE / 10 || result > Integer.MAX_VALUE / 10) {
+                return 0;
+            }
+
             result = result * 10 + (num % 10);
             num = num / 10;
         }
 
-        return result * 10 + num;
+        return result;
     }
 }
