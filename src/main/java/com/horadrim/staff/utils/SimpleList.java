@@ -98,6 +98,20 @@ public class SimpleList {
         head = dummyHead.next;
     }
 
+    public SimpleListNode middleNode() {
+        SimpleListNode slow = this.head;
+        SimpleListNode fast = this.head;
+
+        while (fast != null && fast.next != null) {
+            // slow point move forward by one step.
+            slow = slow.next;
+            // fast point move forward by two steps.
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
     private SimpleListNode head;
 
     private SimpleListNode tail;
