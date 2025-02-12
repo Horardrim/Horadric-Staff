@@ -3,7 +3,7 @@ package com.horadrim.staff.ltcd.list;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.horadrim.staff.utils.SimpleList;
+import com.horadrim.staff.alg.list.SimpleList;
 
 import lombok.extern.slf4j.Slf4j;
 

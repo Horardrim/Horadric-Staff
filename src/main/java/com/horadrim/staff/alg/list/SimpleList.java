@@ -1,4 +1,4 @@
-package com.horadrim.staff.utils;
+package com.horadrim.staff.alg.list;
 
 public class SimpleList {
     public SimpleList() {
