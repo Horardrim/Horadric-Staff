@@ -8,6 +8,18 @@ public class BinaryTree {
         root = null;
     }
 
+    public BinaryTree(int rootNum) {
+        root = new BinaryTreeNode(rootNum);
+    }
+
+    public BinaryTreeNode root() {
+        return root;
+    }
+
+    public void addRight(BinaryTreeNode child) {
+        
+    }
+
     public boolean isBSTree() {
         return isBSTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
@@ -17,6 +29,27 @@ public class BinaryTree {
      */
     public boolean validate() {
         return false;
+    }
+
+    public boolean hasPathSum(int targetSum) {
+        return hasPathSum(root, targetSum);
+    }
+
+    /*
+     * 递归判断二叉树是否有路径上所有节点的和等于targetSum
+     */
+    private boolean hasPathSum(BinaryTreeNode node, int targetSum) {
+        if (node == null || targetSum - node.data < 0) {
+            return false;
+        }
+
+        if (targetSum - node.data == 0) {
+            return true;
+        }
+
+        targetSum -= node.data;
+
+        return hasPathSum(node.left, targetSum) || hasPathSum(node.right, targetSum);
     }
 
     private boolean isBSTree(BinaryTreeNode node, int lower, int upper) {
