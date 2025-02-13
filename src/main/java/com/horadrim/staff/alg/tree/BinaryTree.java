@@ -119,6 +119,8 @@ public class BinaryTree {
                 return true;
             }
 
+            visited.add(node);
+
             if (node.left != null) {
                 queue.offer(node.left);
             }
