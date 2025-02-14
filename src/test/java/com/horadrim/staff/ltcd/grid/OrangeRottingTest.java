@@ -20,7 +20,7 @@ public class OrangeRottingTest {
     }
 
     @Test
-    public void fullyRottenOrangeTest() {
+    public void allOrangeRottenTest() {
         OriginRotting testInstance = new OriginRotting();
         Grid oranges = new Grid(3, 4);
         oranges.setGridValue(0, 0, 2);
@@ -31,5 +31,12 @@ public class OrangeRottingTest {
         oranges.setGridValue(2, 2, 1);
         oranges.setGridValue(2, 3, 1);
         Assertions.assertEquals(5, testInstance.solution(oranges));
+    }
+
+    @Test
+    public void emptyOrangeGridTest() {
+        OriginRotting testInstance = new OriginRotting();
+        Grid oranges = new Grid(3, 4);
+        Assertions.assertEquals(0, testInstance.solution(oranges));
     }
 }
