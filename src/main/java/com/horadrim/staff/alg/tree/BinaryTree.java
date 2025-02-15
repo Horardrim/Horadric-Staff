@@ -175,9 +175,12 @@ public class BinaryTree {
     //     return true;
     // }
 
+    /*
+     * 通过深度搜索判断childTree是不是子树
+     */
     public boolean isSubTree(BinaryTree childTree) {
         BinaryTree.BinaryTreeNode parentTreeRoot = this.root;
-        BinaryTree.BinaryTreeNode childTreeRoot = childTree.root();
+        BinaryTree.BinaryTreeNode childTreeRoot = childTree.root;
 
         return checkSubTree(parentTreeRoot, childTreeRoot);
     }
