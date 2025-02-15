@@ -103,6 +103,7 @@ public class BinaryTree {
 
     /*
      * 通过广度搜索判断二叉树连通性
+     * 广度搜索与通过入度判断连通性有相似
      */
     public boolean BFSConnected() {
         if (root == null) {
