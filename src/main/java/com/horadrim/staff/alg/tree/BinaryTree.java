@@ -186,6 +186,7 @@ public class BinaryTree {
     }
 
     private boolean checkSubTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
+        // parent树的节点多于child树的节点，故若childTreeNode为null则返回true，反之则返回false
         if (childTreeNode == null) {
             return true;
         }
@@ -195,8 +196,8 @@ public class BinaryTree {
         }
 
         return checkSameTree(parentTreeNode, childTreeNode) ||
-            checkSameTree(parentTreeNode.left, childTreeNode) ||
-            checkSameTree(parentTreeNode.right, childTreeNode);
+            checkSubTree(parentTreeNode.left, childTreeNode) ||
+            checkSubTree(parentTreeNode.right, childTreeNode);
     }
 
     private boolean checkSameTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
