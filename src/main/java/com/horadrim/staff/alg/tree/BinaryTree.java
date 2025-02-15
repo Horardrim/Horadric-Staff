@@ -175,6 +175,41 @@ public class BinaryTree {
     //     return true;
     // }
 
+    public boolean isSubTree(BinaryTree childTree) {
+        BinaryTree.BinaryTreeNode parentTreeRoot = this.root;
+        BinaryTree.BinaryTreeNode childTreeRoot = childTree.root();
+
+        return checkSubTree(parentTreeRoot, childTreeRoot);
+    }
+
+    private boolean checkSubTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
+        if (childTreeNode == null) {
+            return true;
+        }
+
+        if (parentTreeNode == null) {
+            return false;
+        }
+
+        return checkSameTree(parentTreeNode, childTreeNode) ||
+            checkSameTree(parentTreeNode.left, childTreeNode) ||
+            checkSameTree(parentTreeNode.right, childTreeNode);
+    }
+
+    private boolean checkSameTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
+        if (parentTreeNode == null && childTreeNode == null) {
+            return true;
+        }
+
+        if (parentTreeNode == null ||
+            childTreeNode == null ||
+            (parentTreeNode.data != childTreeNode.data)) {
+                return false;
+        }
+
+        return checkSameTree(parentTreeNode.left, childTreeNode.left) && checkSameTree(parentTreeNode.right, childTreeNode.right);
+    }
+
     /*
      * definiation of BinrayTreeNode
      */
