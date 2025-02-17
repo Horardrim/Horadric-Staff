@@ -58,6 +58,8 @@ public class StreamChecker {
     
         public TrieNode() {
             children = new TrieNode[ALPHABET_COUNT];
+            isEnd = false;
+            fail = null;
         }
     
         public TrieNode getChild(int index) {
