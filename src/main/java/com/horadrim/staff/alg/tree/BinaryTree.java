@@ -103,6 +103,7 @@ public class BinaryTree {
 
     /*
      * 通过广度搜索判断二叉树连通性
+     * 广度搜索与通过入度判断连通性有相似
      */
     public boolean BFSConnected() {
         if (root == null) {
@@ -174,6 +175,45 @@ public class BinaryTree {
     //     }
     //     return true;
     // }
+
+    /*
+     * 通过深度搜索判断childTree是不是子树
+     */
+    public boolean isSubTree(BinaryTree childTree) {
+        BinaryTree.BinaryTreeNode parentTreeRoot = this.root;
+        BinaryTree.BinaryTreeNode childTreeRoot = childTree.root;
+
+        return checkSubTree(parentTreeRoot, childTreeRoot);
+    }
+
+    private boolean checkSubTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
+        // parent树的节点多于child树的节点，故若childTreeNode为null则返回true，反之则返回false
+        if (childTreeNode == null) {
+            return true;
+        }
+
+        if (parentTreeNode == null) {
+            return false;
+        }
+
+        return checkSameTree(parentTreeNode, childTreeNode) ||
+            checkSubTree(parentTreeNode.left, childTreeNode) ||
+            checkSubTree(parentTreeNode.right, childTreeNode);
+    }
+
+    private boolean checkSameTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
+        if (parentTreeNode == null && childTreeNode == null) {
+            return true;
+        }
+
+        if (parentTreeNode == null ||
+            childTreeNode == null ||
+            (parentTreeNode.data != childTreeNode.data)) {
+                return false;
+        }
+
+        return checkSameTree(parentTreeNode.left, childTreeNode.left) && checkSameTree(parentTreeNode.right, childTreeNode.right);
+    }
 
     /*
      * definiation of BinrayTreeNode
