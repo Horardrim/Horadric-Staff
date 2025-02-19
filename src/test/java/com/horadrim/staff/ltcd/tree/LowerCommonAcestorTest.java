@@ -18,12 +18,14 @@ public class LowerCommonAcestorTest {
         BinaryTree.BinaryTreeNode grandRightChildForRight = testTree.new BinaryTreeNode(5);
         BinaryTree.BinaryTreeNode grandIILeftChildForRightForGrandLeft = testTree.new BinaryTreeNode(6);
         BinaryTree.BinaryTreeNode grandIIRightChildForRightForGrandLeft = testTree.new BinaryTreeNode(7);
+        BinaryTree.BinaryTreeNode grandIILeftChildForRightForGrandRight = testTree.new BinaryTreeNode(8);
         testTree.root().insertLeft(leftChild);
         testTree.root().insertRight(rightChild);
         leftChild.insertLeft(grandLeftChildForLeft);
         rightChild.insertRight(grandRightChildForRight);
         grandLeftChildForLeft.insertLeft(grandIILeftChildForRightForGrandLeft);
         grandLeftChildForLeft.insertRight(grandIIRightChildForRightForGrandLeft);
+        grandRightChildForRight.insertLeft(grandIILeftChildForRightForGrandRight);
 
         BinaryTree.BinaryTreeNode lowerCommonAcestor = testTree.lowestCommonAncestor(grandIILeftChildForRightForGrandLeft, grandRightChildForRight);
         Assertions.assertEquals(testTree.root().data(), lowerCommonAcestor.data());
