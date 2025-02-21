@@ -14,6 +14,5 @@ public class Print2Pow1000Test {
         Assertions.assertEquals(2, result.length);
         Assertions.assertEquals(2, result[0]);
         Assertions.assertEquals(3, result[1]);
-        
     }
 }
