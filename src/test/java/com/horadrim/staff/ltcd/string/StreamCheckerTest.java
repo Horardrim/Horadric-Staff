@@ -1,6 +1,5 @@
 package com.horadrim.staff.ltcd.string;
 
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
