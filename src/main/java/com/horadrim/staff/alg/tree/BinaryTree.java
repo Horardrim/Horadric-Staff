@@ -1,9 +1,9 @@
 package com.horadrim.staff.alg.tree;
 
-import java.util.Set;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class BinaryTree {
     private BinaryTreeNode root;
@@ -222,6 +222,10 @@ public class BinaryTree {
         private BinaryTreeNode left;
         private BinaryTreeNode right;
         private int data;
+
+        public int data() {
+            return data;
+        }
 
         public BinaryTreeNode() {
             left = null;

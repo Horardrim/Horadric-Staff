@@ -92,15 +92,15 @@ public class BTreeNode {
         }
         node.values.add(valueIndex, e);
         eNode.parent = node;
-        node.children.add(valueIndex+1, eNode);
+        node.children.add(valueIndex + 1, eNode);
         if(node.values.size() > M-1) {
             // 获取上升关键字
             int upIndex = M/2;
             int up = node.values.get(upIndex);
             // 当前节点分为左右两部分，左部的parent不变，右部的parent放在上升关键字右侧
             BTreeNode rNode = new BTreeNode(M);
-            rNode.values = new LinkedList(node.values.subList(upIndex+1, M));
-            rNode.children = new LinkedList(node.children.subList(upIndex+1, M+1));
+            rNode.values = new LinkedList(node.values.subList(upIndex + 1, M));
+            rNode.children = new LinkedList(node.children.subList(upIndex + 1, M+1));
             /*  由于rNode.children是从node.children分离出来的,其parent仍指向node，
                 所以需要将rNode.children的parent改为指向rNode
              */
@@ -108,7 +108,7 @@ public class BTreeNode {
                 rChild.parent = rNode;
             }
             node.values = new LinkedList(node.values.subList(0, upIndex));
-            node.children = new LinkedList(node.children.subList(0, upIndex+1));
+            node.children = new LinkedList(node.children.subList(0, upIndex + 1));
             // 从根节点中上升，选取上升关键字作为新的根节点
             if(node.parent == null) {
                 node.parent = new BTreeNode(M);
@@ -206,10 +206,10 @@ public class BTreeNode {
             target.parent.values.set(parentChildIndex-1, upKey);
             return target.getRoot();
         }else if(parentChildIndex < target.parent.children.size()-1 &&
-                target.parent.children.get(parentChildIndex+1).values.size() >= Math.ceil(M/2.0)) {
+                target.parent.children.get(parentChildIndex + 1).values.size() >= Math.ceil(M/2.0)) {
             // 右兄弟关键字数大于 ceil(M/2)-1
             int downKey = target.parent.values.get(parentChildIndex);
-            BTreeNode rightSibling = target.parent.children.get(parentChildIndex+1);
+            BTreeNode rightSibling = target.parent.children.get(parentChildIndex + 1);
             int upKey = rightSibling.values.remove(0);
             BTreeNode mergeChild = rightSibling.children.remove(0);
             target.values.add(downKey);
@@ -232,7 +232,7 @@ public class BTreeNode {
                 leftSibling.children.addAll(target.children);
             }else {
                 // 没有左兄弟和右兄弟合并
-                BTreeNode rightSibling = target.parent.children.get(parentChildIndex+1);
+                BTreeNode rightSibling = target.parent.children.get(parentChildIndex + 1);
                 // 加上父节点关键字
                 parentValueIndex = parentChildIndex;
                 int downKey = target.parent.values.get(parentValueIndex);
@@ -333,7 +333,7 @@ public class BTreeNode {
         sb.append(node.values);
         System.out.println(sb.toString());
         for(BTreeNode child : node.children) {
-            printNode(child, depth+1);
+            printNode(child, depth + 1);
         }
-    }    
+    }
 }

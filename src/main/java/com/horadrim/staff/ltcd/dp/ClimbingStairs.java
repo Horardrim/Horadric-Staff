@@ -19,8 +19,8 @@ public class ClimbingStairs {
     public int solution2(int k) {
         int p = 0, q = 0, r = 1;
         for (int i = 1; i <= k; ++i) {
-            p = q; 
-            q = r; 
+            p = q;
+            q = r;
             r = p + q;
         }
         return r;
