@@ -25,10 +25,10 @@ public class ThreeSumTest {
         Assertions.assertTrue(ansI.get(0) == -1);
         Assertions.assertTrue(ansII.get(0) == -1);
 
-        Assertions.assertTrue(ansI.get(1) == 0);
+        Assertions.assertTrue(ansI.get(1) == -1);
         Assertions.assertTrue(ansII.get(1) == 0);
 
-        Assertions.assertTrue(ansI.get(2) == 1);
+        Assertions.assertTrue(ansI.get(2) == 2);
         Assertions.assertTrue(ansII.get(2) == 1);
     }
 }
