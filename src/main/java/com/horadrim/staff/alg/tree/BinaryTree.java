@@ -1,7 +1,9 @@
 package com.horadrim.staff.alg.tree;
 
+import java.util.Deque;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
 
@@ -186,6 +188,44 @@ public class BinaryTree {
         return checkSubTree(parentTreeRoot, childTreeRoot);
     }
 
+    /*
+     * 获取二叉树的层数
+     */
+    public int level() {
+        if (root == null) {
+            return 0;
+        }
+
+        int level = 1;
+        Deque<BinaryTreeNode> stack = new LinkedList<>();
+        stack.addFirst(root);
+        stack.offerLast(null);
+
+        while (!stack.isEmpty()) {
+            BinaryTreeNode n = stack.pollFirst();
+            if (Objects.isNull(n)) {
+                if (stack.isEmpty()) {
+                    break;
+                } else {
+                    stack.addLast(n);
+                    level += 1;
+                    continue;
+                }
+            }
+
+            if (n.getLeft() != null) {
+                stack.addLast(n.getLeft());
+            }
+
+            if (n.getRight() != null) {
+                stack.addLast(n.getRight());
+            }
+        }
+
+        return level;
+
+    }
+
     private boolean checkSubTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
         // parent树的节点多于child树的节点，故若childTreeNode为null则返回true，反之则返回false
         if (childTreeNode == null) {
@@ -245,6 +285,14 @@ public class BinaryTree {
 
         public void insertRight(BinaryTreeNode child) {
             this.right = child;
+        }
+
+        public BinaryTreeNode getLeft() {
+            return left;
+        }
+
+        public BinaryTreeNode getRight() {
+            return right;
         }
     }
 }
