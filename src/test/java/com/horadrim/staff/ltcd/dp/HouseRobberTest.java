@@ -34,4 +34,12 @@ public class HouseRobberTest {
         int money2 = testInstance.solution(houses2);
         Assertions.assertEquals(money2, 12);
     }
+
+    @Test
+    public void longHousesTest() {
+        HouseRobber testInstance = new HouseRobber();
+        int [] houses = {3, 1, 5, 9, 2, 1};
+        int money = testInstance.solution(houses);
+        Assertions.assertEquals(money, 13);
+    }
 }
