@@ -24,10 +24,10 @@ public class MaxProfitStock {
             if(money > maxMoney){
                 maxMoney = money;
             }
-            if(money<0){
+            if(money < 0){
                 slowIndex = fastIndex;
             }
-            fastIndex++;
+            ++fastIndex;
         }
         return maxMoney;
     }
