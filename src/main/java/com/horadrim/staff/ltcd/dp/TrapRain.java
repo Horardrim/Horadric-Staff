@@ -26,17 +26,52 @@ public class TrapRain {
         return rain;
     }
 
+
+    /*
+     * 维护一个类似一下图形的单调栈
+     * |__
+     * |  |__
+     * |  |  |__
+     * |  |  |  |
+     * |__|__|__|___________
+     * 
+     * 当出现一个高度大于其左边高度
+     * |__       __
+     * |  |__   |  |
+     * |  |  |__|  |
+     * |  |  |  |  |
+     * |__|__|__|__|_________
+     * 
+     * 计算该高度最左边的可储水的高度如'**'
+     * |__       __
+     * |  |__   |  |
+     * |  |  |**|  |
+     * |  |  |  |  |
+     * |__|__|__|__|_________
+     * 
+     * 计算该高度次最左边可储水的高度如'//'
+     * |__       __
+     * |  |// //|  |
+     * |  |  |**|  |
+     * |  |  |  |  |
+     * |__|__|__|__|_________
+     */
     public int solutionII(int [] height) {
         int rain = 0;
         Deque<Integer> stack = new LinkedList<Integer>();
         int n = height.length;
         for (int i = 0; i < n; ++i) {
             while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
+                // 获取当前高度左边的高度，也就是底部的
                 int top = stack.pop();
+
                 if (stack.isEmpty()) {
                     break;
                 }
+
+                // 获取底部左边的高度，也就是左边的边缘高度
                 int left = stack.peek();
+                // 极端宽度
                 int currWidth = i - left - 1;
                 int currHeight = Math.min(height[left], height[i]) - height[top];
                 rain += currWidth * currHeight;
