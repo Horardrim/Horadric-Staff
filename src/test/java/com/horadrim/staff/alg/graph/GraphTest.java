@@ -22,4 +22,19 @@ public class GraphTest {
         Assertions.assertTrue(graph.validPathByDFS(1, 4));
         Assertions.assertTrue(!graph.validPathByDFS(1, 5));
     }
+
+    @Test
+    public void WeightedDirectedGraphTest() {
+        WeightedDirectedGraph wgp = new WeightedDirectedGraph(6);
+        wgp.addEdge(0, 1, 10);
+        wgp.addEdge(0, 4, 5);
+        wgp.addEdge(1, 2, 1);
+        //wgp.addEdge(1, 3, 4);
+        wgp.addEdge(1, 4, 2);
+        wgp.addEdge(2, 3, 2);
+        wgp.addEdge(3, 1, 3);
+        wgp.addEdge(3, 4, 3);
+        int [] distance = wgp.dijkstra(0, 3);
+        log.info(String.valueOf(distance.length));
+    }
 }

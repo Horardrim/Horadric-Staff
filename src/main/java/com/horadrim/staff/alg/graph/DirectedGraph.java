@@ -9,7 +9,7 @@ import java.util.Queue;
 public class DirectedGraph {
     public DirectedGraph(int vertices) {
         _vertices = vertices;
-        _edges = new ArrayList<>();
+        _edges = new ArrayList<>(_vertices);
         for (int i = 0; i < _vertices; ++i) {
             _edges.add(null);
         }
@@ -81,6 +81,16 @@ public class DirectedGraph {
         List<LinkedList<Integer>> adj = new ArrayList<>(_edges);
 
         return dfs(visited, adj, source, dest);
+    }
+
+    public int shortestPath(int source, int dest) {
+        int path = 0;
+        return path;
+    }
+
+    public int longgestPath(int source, int dest) {
+        int path = 0;
+        return path;
     }
 
     private List<LinkedList<Integer>> _edges;
