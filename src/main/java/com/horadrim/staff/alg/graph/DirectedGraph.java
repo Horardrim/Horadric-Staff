@@ -2,6 +2,8 @@ package com.horadrim.staff.alg.graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -74,6 +76,48 @@ public class DirectedGraph {
         }
 
         return false;
+    }
+
+    public boolean topologicalSortKahn() {
+        int[] in_degree = new int[_vertices];
+        Queue<Integer> q = new ArrayDeque<>();
+        List<Integer> topo_order = new ArrayList<>();
+
+        // 计算每个节点的入度
+        for (int i = 0; i < _vertices; ++i) {
+            if (_edges.get(i) == null) {
+                continue;
+            }
+
+            for (int neighbor : _edges.get(i)) {
+                in_degree[neighbor]++;
+            }
+        }
+
+        // 将所有入度为 0 的节点加入队列
+        for (int i = 0; i < _vertices; ++i) {
+            if (in_degree[i] == 0) {
+                q.offer(i);
+            }
+        }
+
+        while(!q.isEmpty()) {
+            int u = q.poll();
+            topo_order.add(u);
+
+            if (_edges.get(u) == null) {
+                continue;
+            }
+
+            for (int neighbor : _edges.get(u)) {
+                in_degree[neighbor]--;
+                if (in_degree[neighbor] == 0) {
+                    q.offer(neighbor);
+                }
+            }
+        }
+
+        return (topo_order.size() == _vertices);
     }
 
     public boolean validPathByDFS(int source, int dest) {

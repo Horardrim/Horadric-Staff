@@ -37,4 +37,35 @@ public class GraphTest {
         int [] distance = wgp.dijkstra(0, 3);
         log.info(String.valueOf(distance.length));
     }
+
+    @Test
+    public void topoSortTest() {
+        DirectedGraph graph = new DirectedGraph(5);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 3);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        Assertions.assertTrue(graph.topologicalSortKahn());
+    }
+
+    @Test
+    public void topoSortTestII() {
+        DirectedGraph graph = new DirectedGraph(5);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 3);
+        // graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        Assertions.assertTrue(graph.topologicalSortKahn());
+    }
+
+    @Test
+    public void topoSortTestIII() {
+        DirectedGraph graph = new DirectedGraph(5);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 2);
+        
+        Assertions.assertTrue(!graph.topologicalSortKahn());
+    }
 }
