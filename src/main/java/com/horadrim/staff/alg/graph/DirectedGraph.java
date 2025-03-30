@@ -2,6 +2,7 @@ package com.horadrim.staff.alg.graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -78,7 +79,7 @@ public class DirectedGraph {
         return false;
     }
 
-    public boolean topologicalSortKahn() {
+    public List<Integer> topologicalSortKahn() {
         int[] in_degree = new int[_vertices];
         Queue<Integer> q = new ArrayDeque<>();
         List<Integer> topo_order = new ArrayList<>();
@@ -117,7 +118,7 @@ public class DirectedGraph {
             }
         }
 
-        return (topo_order.size() == _vertices);
+        return (topo_order.size() == _vertices ? topo_order : null);
     }
 
     public boolean validPathByDFS(int source, int dest) {
@@ -127,14 +128,56 @@ public class DirectedGraph {
         return dfs(visited, adj, source, dest);
     }
 
-    public int shortestPath(int source, int dest) {
-        int path = 0;
-        return path;
+    public static DirectedGraph fromMatrix(int [][] adjMatrix) {
+        DirectedGraph graph = new DirectedGraph(adjMatrix.length);
+        return graph;
     }
 
-    public int longgestPath(int source, int dest) {
-        int path = 0;
-        return path;
+    List<Integer> adjMatrixBFS(int [][] adjMatrix, int source, int dest) {
+        int n = adjMatrix.length;
+        int [] prev = new int[n + 1];
+        Arrays.fill(prev, -1);
+        Queue<Integer> q = new ArrayDeque<>();
+        q.offer(source);
+
+        while(!q.isEmpty()) {
+            int current = q.poll();
+            if (current == dest) {
+                break;
+            }
+
+            for (int i = 0; i < n; ++i) {
+                if (adjMatrix[current][i] == 1 && prev[i] == -1) {
+                    q.offer(i);
+                    prev[i] = current;
+                }
+            }
+        }
+
+        if (prev[dest] != -1) {
+            List<Integer> path = new ArrayList<>();
+            for (int at = dest; at != -1; at = prev[at]) {
+                path.add(at);
+            }
+            return path.reversed();
+        }
+
+        return null;
+    }
+
+    public int[][] toMatrix() {
+        int[][] matrix = new int[_vertices + 1][_vertices + 1];
+        for (int i = 0; i < _edges.size(); ++i) {
+            if (_edges.get(i) == null) {
+                continue;
+            }
+
+            for (int dest : _edges.get(i)) {
+                matrix[i][dest] = 1;
+            }
+        }
+
+        return matrix;
     }
 
     private List<LinkedList<Integer>> _edges;
