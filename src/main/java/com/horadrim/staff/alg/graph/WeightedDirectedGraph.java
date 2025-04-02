@@ -29,9 +29,13 @@ public class WeightedDirectedGraph {
         }
     }
 
-    public int[] dijkstra(int source, int dest) {
+    /*
+     * 计算从source开始到其他顶点的最短距离
+     */
+    public int[] dijkstra(int source) {
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
         int[] distances = new int[_vertices + 1];
+        Arrays.fill(distances, Integer.MAX_VALUE);
         boolean[] visited = new boolean[_vertices + 1];
 
         Arrays.fill(distances, Integer.MAX_VALUE);
@@ -70,6 +74,72 @@ public class WeightedDirectedGraph {
         }
         
         return distances;
+    }
+
+    private int[][] toMatrix() {
+        int [][] matrix = new int[_vertices][_vertices];
+        for (int i = 0; i < _vertices; ++i) {
+            for (int j = 0; j < _vertices; ++j) {
+                if (i == j) {
+                    matrix[i][j] = 0;
+                } else {
+                    matrix[i][j] = Integer.MAX_VALUE;
+                }
+
+            }
+        }
+
+        for (int i = 0; i < _vertices; ++i) {
+            if (_edges.get(i) == null) {
+                continue;
+            }
+            for (Pair<Integer, Integer> edge : _edges.get(i)) {
+                matrix[i][edge.getKey()] = edge.getValue();
+            }
+        }
+        return matrix;
+    }
+
+    public int[][] floydWarshall() {
+        // 初始化距离矩阵
+        int [][] dist = toMatrix();
+
+        // 动态规划更新最短路径
+        for (int k = 0; k < _vertices; k++) {
+            for (int i = 0; i < _vertices; i++) {
+                for (int j = 0; j < _vertices; j++) {
+                    if (dist[i][k] != Integer.MAX_VALUE && dist[k][j] != Integer.MAX_VALUE
+                            && dist[i][k] + dist[k][j] < dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        return dist;
+    }
+
+    public int shortestCycle() {
+        int shortestCycle = Integer.MAX_VALUE;
+
+        for (int i = 0; i < _vertices; ++i) {
+            if (_edges.get(i) == null) {
+                continue;
+            }
+            for (Pair<Integer, Integer> edge : _edges.get(i)) {
+                int v = edge.getKey();
+                int weight = edge.getValue();
+                int [] dist = dijkstra(v);
+                if (dist[i] != Integer.MAX_VALUE) {
+                    int cycleLength = dist[i] + weight;
+                    if (cycleLength < shortestCycle) {
+                        shortestCycle = cycleLength;
+                    }
+                }
+            }
+        }
+
+        return (shortestCycle == Integer.MAX_VALUE ? -1 : shortestCycle);
     }
 
     private int _vertices;

@@ -37,7 +37,7 @@ public class GraphTest {
         wgp.addEdge(2, 3, 2);
         wgp.addEdge(3, 1, 3);
         wgp.addEdge(3, 4, 3);
-        int [] distance = wgp.dijkstra(0, 3);
+        int [] distance = wgp.dijkstra(0);
         log.info(String.valueOf(distance.length));
         Assertions.assertEquals(13, distance[3]);
     }
