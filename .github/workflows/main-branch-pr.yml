@@ -13,13 +13,13 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: 17
+          java-version: 21
           distribution: 'temurin'
 
       - name: Set up Maven
         uses: actions/setup-java@v2
         with:
-          java-version: 17
+          java-version: 21
           distribution: 'temurin'
 
       - uses: actions/checkout@v4
