@@ -6,8 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
-
-import javafx.util.Pair;
+import java.util.AbstractMap.SimpleEntry;
 
 public class WeightedDirectedGraph {
     public WeightedDirectedGraph(int vertices) {
@@ -20,12 +19,12 @@ public class WeightedDirectedGraph {
 
     public void addEdge(int from, int to, int weight) {
         if (_edges.get(from) == null) {
-            LinkedList<Pair<Integer, Integer>> weightedEdge = new LinkedList<>();
-            weightedEdge.add(new Pair<Integer,Integer>(to, weight));
+            LinkedList<SimpleEntry<Integer, Integer>> weightedEdge = new LinkedList<>();
+            weightedEdge.add(new SimpleEntry<Integer,Integer>(to, weight));
             _edges.add(from, weightedEdge);
         } else {
-            LinkedList<Pair<Integer, Integer>> weightedEdge = _edges.get(from);
-            weightedEdge.add(new Pair<Integer,Integer>(to, weight));
+            LinkedList<SimpleEntry<Integer, Integer>> weightedEdge = _edges.get(from);
+            weightedEdge.add(new SimpleEntry<Integer,Integer>(to, weight));
         }
     }
 
@@ -61,7 +60,7 @@ public class WeightedDirectedGraph {
             }
 
             // 遍历当前节点的所有邻接节点
-            for (Pair<Integer, Integer> edge : _edges.get(currentNode)) {
+            for (SimpleEntry<Integer, Integer> edge : _edges.get(currentNode)) {
                 int neighbor = edge.getKey();
                 int weight = edge.getValue();
 
@@ -93,7 +92,7 @@ public class WeightedDirectedGraph {
             if (_edges.get(i) == null) {
                 continue;
             }
-            for (Pair<Integer, Integer> edge : _edges.get(i)) {
+            for (SimpleEntry<Integer, Integer> edge : _edges.get(i)) {
                 matrix[i][edge.getKey()] = edge.getValue();
             }
         }
@@ -126,7 +125,7 @@ public class WeightedDirectedGraph {
             if (_edges.get(i) == null) {
                 continue;
             }
-            for (Pair<Integer, Integer> edge : _edges.get(i)) {
+            for (SimpleEntry<Integer, Integer> edge : _edges.get(i)) {
                 int v = edge.getKey();
                 int weight = edge.getValue();
                 int [] dist = dijkstra(v);
@@ -143,5 +142,5 @@ public class WeightedDirectedGraph {
     }
 
     private int _vertices;
-    private List<LinkedList<Pair<Integer, Integer>>> _edges;
+    private List<LinkedList<SimpleEntry<Integer, Integer>>> _edges;
 }
