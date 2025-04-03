@@ -7,6 +7,32 @@
 
 package com.horadrim.staff.ltcd.array;
 
+import java.util.Arrays;
+
 public class ArrayPartition {
-    
+    public int [] solution(int k, int [] input) {
+        if (input.length == 0) {
+            return input;
+        }
+        int [] output = Arrays.copyOf(input, input.length);
+        int left = 0, middle = 0, right = input.length - 1;
+        while (middle <= right) {
+            if (output[middle] < k) {
+                int t = output[left];
+                output[left] = output[middle];
+                output[middle] = t;
+                ++left;
+                ++middle;
+            } else if (output[middle] == k) {
+                ++middle;
+            } else {
+                int t = output[middle];
+                output[middle] = output[right];
+                output[right] = t;
+                --right;
+            }
+        }
+
+        return output;
+    }
 }
