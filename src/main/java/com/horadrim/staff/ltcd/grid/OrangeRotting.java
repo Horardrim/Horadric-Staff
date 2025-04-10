@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import com.horadrim.staff.alg.grid.Grid;
 
-public class OriginRotting {
+public class OrangeRotting {
     /*
      * 通过多源广度算法计算
      */
@@ -18,6 +18,7 @@ public class OriginRotting {
 
         int R = grid.length, C = grid[0].length;
         Queue<Integer> queue = new ArrayDeque<>();
+        // depth哈希表的key为桔子位置的ncode，value为其腐烂所需要的时间
         Map<Integer, Integer> depth = new HashMap<>();
 
         // 寻找第一个腐烂的橘子
@@ -27,6 +28,7 @@ public class OriginRotting {
                     // 将腐烂橘子的位置信息计算为code并加入到队列中
                     int code = r * C + c;
                     queue.add(code);
+                    // 第一个桔子已经腐烂所有value为0
                     depth.put(code, 0);
                 }
             }
