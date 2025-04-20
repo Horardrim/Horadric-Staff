@@ -22,9 +22,9 @@ public class LongestCommonSubstringTest {
     }
 
     @Test
-    public void nultiCommonSubstringTest() {
+    public void multiCommonSubstringTest() {
         LongestCommonSubstring testInc = new LongestCommonSubstring();
-        String common = testInc.solution("cadd", "t168ca");
+        String common = testInc.solution("cbdad", "t168ca");
         Assertions.assertEquals("c", common);
     }
 }

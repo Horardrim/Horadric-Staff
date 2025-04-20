@@ -1,8 +1,10 @@
 package com.horadrim.staff.ltcd.string;
 
+import java.util.Objects;
+
 public class LongestCommonSubstring {
     public String solution(String s1, String s2) {
-        if (s1 == null || s2 == null) {
+        if (Objects.isNull(s1) || Objects.isNull(s2)) {
             return null;
         }
 
