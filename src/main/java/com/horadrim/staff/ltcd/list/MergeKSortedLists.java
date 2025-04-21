@@ -6,24 +6,31 @@ public class MergeKSortedLists {
         ListNode result = new ListNode();
         ListNode dummyHead = result;
         int listCount = lists.length;
-        int nullCounter = 0;
 
         while(true) {
+            // 用于标记哪个链表的头节点的值最小
             int mark = 0;
-            nullCounter = 0;
+            // 用于计算链表数组中节点都被遍历的链表个数有几个
+            int nullCounter = 0;
             ListNode nodeToInsert = lists[0];
+
+            // 对每个链表的第一个节点的值进行比较
             for (int i = 0; i < listCount; ++i) {
                 ListNode head = lists[i];
+                // 从每个链表中找到值最小的节点并且赋给nodeToInsert
+                // 并且将mark的指向该链表的索引
                 if (head != null && nodeToInsert != null
                     && nodeToInsert.getData() > head.getData()) {
                     nodeToInsert = head;
                     mark = i;
                 }
 
+                // nullCounter加1来计算有几个链表其所有的节点都被遍历
                 if (head == null) {
                     ++nullCounter;
                 }
 
+                // 链表中的节点已经都遍历了，指向下一个链表的头节点
                 if (nodeToInsert == null) {
                     mark = (i + 1) % listCount;
                     nodeToInsert = lists[mark];
@@ -31,12 +38,14 @@ public class MergeKSortedLists {
                 }
             }
 
+            // 如果nullCounter == listCount则所有链表均已经遍历
             if (nullCounter == listCount) {
                 break;
             }
 
             dummyHead.next = new ListNode(lists[mark].getData());
             dummyHead = dummyHead.next;
+            // 将链表的头指向下一个节点
             lists[mark] = lists[mark].next;
         }
 
