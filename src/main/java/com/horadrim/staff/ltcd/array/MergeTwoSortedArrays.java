@@ -8,6 +8,7 @@ public class MergeTwoSortedArrays {
         int p2 = 0;
         while (p1 < array1.length || p2 <  array2.length) {
             int cur = Integer.MIN_VALUE;
+
             if (p1 == array1.length) {
                 cur = array2[p2++];
             } else if (p2 == array2.length) {
