@@ -17,7 +17,9 @@ public class OriginRotting {
         int[] dc = new int[]{0, -1, 0, 1};
 
         int R = grid.length, C = grid[0].length;
+        // 添加与腐烂桔子相邻的其他桔子
         Queue<Integer> queue = new ArrayDeque<>();
+        // 用于记录每一轮桔子腐烂需要的时间
         Map<Integer, Integer> depth = new HashMap<>();
 
         // 寻找第一个腐烂的橘子
