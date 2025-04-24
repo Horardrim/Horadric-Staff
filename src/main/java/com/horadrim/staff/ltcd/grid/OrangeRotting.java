@@ -17,6 +17,7 @@ public class OrangeRotting {
         int[] dc = new int[]{0, -1, 0, 1};
 
         int R = grid.length, C = grid[0].length;
+        // 添加与腐烂桔子相邻的其他桔子
         Queue<Integer> queue = new ArrayDeque<>();
         // depth哈希表的key为桔子位置的ncode，value为其腐烂所需要的时间
         Map<Integer, Integer> depth = new HashMap<>();
