@@ -1,6 +1,10 @@
 package com.horadrim.staff.ltcd.array;
 
 public class SecondGreatestInArray {
+    
+    /*
+     * 通过遍历数组比较初始的最大值和第二大值
+     */
     int solution(int[] array) {
         if (array.length <= 1) {
             System.out.println("length is less than 2. return");
@@ -24,6 +28,9 @@ public class SecondGreatestInArray {
         return second;
     }
 
+    /*
+     * 通过两次冒泡排序得出数组中第二大数
+     */
     int solutionII(int[] array) {
         if (array.length <= 1) {
             System.out.println("length is less than 2. return");
