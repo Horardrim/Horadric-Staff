@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OrangeRottingTest {
     @Test
     public void normalTest() {
-        OriginRotting testInstance = new OriginRotting();
+        OrangeRotting testInstance = new OrangeRotting();
         Grid oranges = new Grid(3, 4);
         oranges.setGridValue(0, 0, 2);
         oranges.setGridValue(0, 1, 1);
@@ -21,7 +21,7 @@ public class OrangeRottingTest {
 
     @Test
     public void allOrangeRottenTest() {
-        OriginRotting testInstance = new OriginRotting();
+        OrangeRotting testInstance = new OrangeRotting();
         Grid oranges = new Grid(3, 4);
         oranges.setGridValue(0, 0, 2);
         oranges.setGridValue(0, 1, 1);
@@ -35,7 +35,7 @@ public class OrangeRottingTest {
 
     @Test
     public void emptyOrangeGridTest() {
-        OriginRotting testInstance = new OriginRotting();
+        OrangeRotting testInstance = new OrangeRotting();
         Grid oranges = new Grid(3, 4);
         Assertions.assertEquals(0, testInstance.solution(oranges));
     }

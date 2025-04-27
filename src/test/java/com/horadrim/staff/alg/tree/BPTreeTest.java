@@ -13,6 +13,9 @@ public class BPTreeTest {
         BPTree testTree = new BPTree(3);
         Assertions.assertTrue(testTree.getRoot().isLeaf());
         testTree.insertOrUpdate(12, "feafeafea");
-        Assertions.assertTrue(testTree.getRoot().isLeaf());
+        testTree.insertOrUpdate(13, "feafeafbbbb");
+        testTree.insertOrUpdate(14, "eafbbbb");
+        testTree.insertOrUpdate(15, "eafbbbbfeafe");
+        Assertions.assertTrue(!testTree.getRoot().isLeaf());
     }
 }
