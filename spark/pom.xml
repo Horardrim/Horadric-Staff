@@ -4,8 +4,14 @@
   <groupId>com.horadrim</groupId>
   <artifactId>Horadric-Staff-Spark-Jobs</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.0</version>
+  <version>${project.version}</version>
   <name>horadrim-spark-jobs</name>
+
+  <parent>
+    <groupId>com.horadrim</groupId>
+    <artifactId>Horadric-Staff</artifactId>
+  </parent>
+
   <modules>
     <module>word-count</module>
   </modules>

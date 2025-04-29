@@ -2,14 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.horadrim</groupId>
-  <artifactId>Horadric-Staff-Spark-Word-Count-Job</artifactId>
-  <packaging>jar</packaging>
+  <artifactId>Horadric-Staff-Demo</artifactId>
+  <packaging>pom</packaging>
   <version>${project.version}</version>
-  <name>horadrim-word-count-job</name>
+  <name>horadrim-java-demo</name>
 
   <parent>
     <groupId>com.horadrim</groupId>
-    <artifactId>Horadric-Staff-Spark-Jobs</artifactId>
+    <artifactId>Horadric-Staff</artifactId>
   </parent>
 
   <dependencies>
@@ -51,8 +51,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>21</source>
+          <target>21</target>
         </configuration>
       </plugin>
       <plugin>
