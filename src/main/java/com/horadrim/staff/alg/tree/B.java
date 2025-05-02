@@ -1,5 +1,7 @@
 package com.horadrim.staff.alg.tree;
 
+import java.util.List;
+
 public interface B {
 	/**
 	 * 查询
@@ -18,4 +20,6 @@ public interface B {
 	 * @param obj
 	 */
 	void insertOrUpdate(Comparable key, Object obj);
+
+	List<Object> rangeSearch(Comparable low, Comparable high);
 }

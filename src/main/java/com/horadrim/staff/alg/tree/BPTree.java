@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleEntry;
 
@@ -54,6 +55,49 @@ public class BPTree implements B, Serializable {
 	public void insertOrUpdate(Comparable key, Object obj) {
 		root.insertOrUpdate(key, obj, this);
 	}
+
+    @Override
+    public
+    List<Object> rangeSearch(Comparable low, Comparable high) {
+        Node currentNode = this.root;
+        while(!currentNode.isLeaf) {
+            if (low.compareTo(currentNode.entries.get(0).getKey()) <= 0) {
+                currentNode = currentNode.children.get(0);
+            } else if (low.compareTo(currentNode.entries.get(currentNode.entries.size() - 1).getKey()) >= 0) {
+                currentNode = currentNode.children.get(currentNode.entries.size() - 1);
+            } else {
+                for (int i = 0; i < currentNode.entries.size(); ++i) {
+                    Comparable leftKey = currentNode.entries.get(i).getKey();
+                    Comparable rightKey = currentNode.entries.get(i + 1).getKey();
+                    if (low.compareTo(leftKey) >= 0 && low.compareTo(rightKey) <= 0){
+                        currentNode = currentNode.children.get(i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        List<Object> result = new ArrayList<>();
+        while (!Objects.isNull(currentNode)) {
+            for (Entry entry : currentNode.entries) {
+                if (low.compareTo(entry.getKey()) <= 0
+                    && high.compareTo(entry.getKey()) >= 0) {
+
+                    result.add(entry.getValue());
+                    
+                } else if (high.compareTo(entry.getKey()) < 0) {
+                    currentNode = null;
+                    break;
+                }
+            }
+
+            if (!Objects.isNull(currentNode)) {
+                currentNode = currentNode.next;
+            }
+        }
+
+        return result;
+    }
 
 	public BPTree(int order) {
 		if (order < 3) {
