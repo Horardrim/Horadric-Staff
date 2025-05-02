@@ -1,8 +1,11 @@
 package com.horadrim.staff.ltcd.array;
 
+/*
+ * Tag: 快慢指针
+ */
 public class RemoveDupII {
     /*
-     * 通过快慢指针
+     * 通过快慢指针查找出现次数超过2次以上的元素，然后通过交换删除多余元素
      */
     public int solution(int [] nums) {
         int n = nums.length;
