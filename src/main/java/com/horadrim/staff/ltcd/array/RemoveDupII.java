@@ -1,7 +1,7 @@
 package com.horadrim.staff.ltcd.array;
 
 /*
- * Tag: 快慢指针
+ * Tag: 快慢指针，荷兰国旗问题
  */
 public class RemoveDupII {
     /*
