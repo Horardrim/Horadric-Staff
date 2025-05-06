@@ -3,6 +3,9 @@ package com.horadrim.staff.ltcd.array;
 import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleEntry;
 
+/*
+ * Tag: 二分查找
+ */
 public class SearchRange {
     public Entry<Integer, Integer> solution(int nums[], int target) {
         if (nums[0] > target || nums[nums.length - 1] < target) {

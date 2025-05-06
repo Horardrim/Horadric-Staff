@@ -1,5 +1,8 @@
 package com.horadrim.staff.ltcd.array;
 
+/*
+ * Tag: 贪心算法
+ */
 public class JumpGameII {
     /*
      * 贪心算法，不断更新maxPosition，i每次移动maxPosition保持最大值
