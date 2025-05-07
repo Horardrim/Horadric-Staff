@@ -11,7 +11,14 @@ public class LongestCommonSubstring {
         int m = s1.length();
         int n = s2.length();
         int[][] dp = new int[m + 1][n + 1];
+        // 公共子字符串的最大长度
         int maxLength = 0;
+        /*
+         * s1字符串的下标索引，用于记录公共子字符串的最后一个字符所在的索引
+         * 当然也可以用s2字符串的下标，一下endIndex = i就应该改成endIndex = j
+         * return s1.substring(endIndex - maxLength, endIndex); 应该改成
+         * s2.substring(endIndex - maxLength, endIndex);
+         */
         int endIndex = 0;
 
         for (int i = 1; i <= m; i++) {
