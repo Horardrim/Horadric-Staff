@@ -1,5 +1,9 @@
 package com.horadrim.staff.ltcd.array;
 
+/*
+ * 有两个已排序数组A和B，将A和B有序的放到一个新的数组中
+ * 算法与CopyOneOfTwoSortedArrays类似
+ */
 public class MergeTwoSortedArrays {
     int [] solution(int [] array1, int [] array2) {
         int [] result = new int[array1.length + array2.length];
