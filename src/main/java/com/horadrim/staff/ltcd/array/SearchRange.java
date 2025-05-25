@@ -33,7 +33,7 @@ public class SearchRange {
         // 二分查找搜索右边界
         while (l <= r) {
             int m = (r - l) / 2 + l;
-            // 寻找左边界所以中间值必须大于target时才搜索左半边
+            // 寻找右边界所以中间值必须大于target时才搜索左半边
             if (nums[m] > target) {
                 r = m - 1;
             } else {
