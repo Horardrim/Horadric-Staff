@@ -43,11 +43,14 @@ public class BinaryTreeValidateTest {
         testTree.root().insertRight(right);
 
         Assertions.assertEquals(2, testTree.level());
+        Assertions.assertEquals(2, testTree.level(1));
 
         BinaryTree emptyTree = new BinaryTree();
         Assertions.assertEquals(0, emptyTree.level());
+        Assertions.assertEquals(0, emptyTree.level(1));
 
         testTree.root().getLeft().insertLeft(testTree.new BinaryTreeNode(5));
         Assertions.assertEquals(3, testTree.level());
+        Assertions.assertEquals(3, testTree.level(1));
     }
 }
