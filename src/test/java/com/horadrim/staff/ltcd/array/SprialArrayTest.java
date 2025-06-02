@@ -20,4 +20,34 @@ public class SprialArrayTest {
         Assertions.assertEquals(0, result[0]);
         Assertions.assertEquals(0, result[2]);
     }
+
+    @Test
+    public void oneElementArrayTest() {
+        int[][] array = {{1}};
+
+        int [] result = new SprialArray().solution(array);
+        Assertions.assertEquals(1, result.length);
+        Assertions.assertEquals(1, result[0]);
+        result = new SprialArray().solutionII(array);
+        Assertions.assertEquals(1, result.length);
+        Assertions.assertEquals(1, result[0]);
+    }
+
+    @Test
+    public void wideArraysTest() {
+        int[][] array = {{0, 1, 2, 3, 5}, {1, 2, 4, 0, 1}, {1, 3, 4, 6, 8}};
+
+        int [] result = new SprialArray().solution(array);
+        Assertions.assertEquals(15, result.length);
+        Assertions.assertEquals(0, result[0]);
+        Assertions.assertEquals(5, result[4]);
+        Assertions.assertEquals(4, result[13]);
+        Assertions.assertEquals(0, result[14]);
+        result = new SprialArray().solutionII(array);
+        Assertions.assertEquals(15, result.length);
+        Assertions.assertEquals(0, result[0]);
+        Assertions.assertEquals(5, result[4]);
+        Assertions.assertEquals(4, result[13]);
+        Assertions.assertEquals(0, result[14]);
+    }
 }
