@@ -3,6 +3,9 @@ package com.horadrim.staff.ltcd.array;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/*
+ * Tag: 单调栈
+ */
 public class SlideWindowMax {
     public int [] solution(int [] nums, int k) {
         if (k > nums.length || k == 0) {
@@ -13,15 +16,15 @@ public class SlideWindowMax {
         Deque<Integer> deque = new LinkedList<>();
 
         for (int i = 0; i < nums.length; i++) {
-            // 移除过期元素
+            // 从队列头部移除过期元素
             while (!deque.isEmpty() && deque.peek() < i - k + 1) {
                 deque.poll();
             }
-            // 移除较小元素
+            // 从队尾移除较小元素
             while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
                 deque.pollLast();
             }
-            // 添加当前元素
+            // 添加当前元素到队尾，一般大的元素会放在头部
             deque.offer(i);
             // 获取最大值
             if (i >= k - 1) {

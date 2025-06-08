@@ -1,9 +1,9 @@
 package com.horadrim.staff.ltcd.array;
 
+/*
+ * Tag: 贪心算法
+ */
 public class JumpGame {
-    /*
-     * 贪心算法
-     */
     boolean solution(int [] nums) {
         // 从最左边起最远可抵达长度，初始值为0
         int rightMost = 0;

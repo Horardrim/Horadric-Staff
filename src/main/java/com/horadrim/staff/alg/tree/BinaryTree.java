@@ -40,6 +40,9 @@ public class BinaryTree {
      * 两个节点的最低公共祖先节点
      */
     public BinaryTreeNode lowestCommonAncestor(BinaryTreeNode p, BinaryTreeNode q) {
+        if (p == null || q == null) {
+            return null;
+        }
         return lowestCommonAncestor(root, p, q);
     }
 
@@ -197,33 +200,64 @@ public class BinaryTree {
         }
 
         int level = 1;
-        Deque<BinaryTreeNode> stack = new LinkedList<>();
-        stack.addFirst(root);
-        stack.offerLast(null);
+        Deque<BinaryTreeNode> queue = new LinkedList<>();
+        queue.addFirst(root);
+        queue.offerLast(null);
 
-        while (!stack.isEmpty()) {
-            BinaryTreeNode n = stack.pollFirst();
+        while (!queue.isEmpty()) {
+            BinaryTreeNode n = queue.pollFirst();
             if (Objects.isNull(n)) {
-                if (stack.isEmpty()) {
+                if (queue.isEmpty()) {
                     break;
                 } else {
-                    stack.addLast(n);
+                    queue.addLast(n);
                     level += 1;
                     continue;
                 }
             }
 
             if (n.getLeft() != null) {
-                stack.addLast(n.getLeft());
+                queue.addLast(n.getLeft());
             }
 
             if (n.getRight() != null) {
-                stack.addLast(n.getRight());
+                queue.addLast(n.getRight());
             }
         }
 
         return level;
 
+    }
+
+    public final int level(int overload) {
+        if (root == null) {
+            return 0;
+        }
+
+        int level = 1;
+        Deque<BinaryTreeNode> queue = new LinkedList<>();
+        queue.addFirst(root);
+        while (!queue.isEmpty()) {
+            int nodeCount = queue.size();
+            int nullNodeCount = 0;
+            for (int i = 0; i < nodeCount; ++i) {
+                BinaryTreeNode node = queue.poll();
+                if (Objects.isNull(node)) {
+                    ++nullNodeCount;
+                    continue;
+                }
+
+                queue.addLast(node.getLeft());
+                queue.addLast(node.getRight());
+            }
+
+            if (nullNodeCount == nodeCount) {
+                return level - 1;
+            }
+            ++level;
+        }
+
+        return level;
     }
 
     private boolean checkSubTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {

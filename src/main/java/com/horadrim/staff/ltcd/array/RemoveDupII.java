@@ -1,8 +1,12 @@
 package com.horadrim.staff.ltcd.array;
 
+/*
+ * 给定一个有序数组 nums ，请你 原地 删除重复出现的元素，使得出现次数超过两次的元素只出现两次 ，返回删除后数组的新长度。
+ * Tag: 快慢指针，荷兰国旗问题
+ */
 public class RemoveDupII {
     /*
-     * 通过快慢指针
+     * 通过快慢指针查找出现次数超过2次以上的元素，然后通过交换删除多余元素
      */
     public int solution(int [] nums) {
         int n = nums.length;

@@ -1,5 +1,8 @@
 package com.horadrim.staff.ltcd.array;
 
+/*
+ * Tag: 二分查找
+ */
 public class SearchInsert {
     public int solution(int [] nums, int target) {
         int result = -1;

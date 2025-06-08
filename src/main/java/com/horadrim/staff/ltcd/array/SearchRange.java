@@ -3,6 +3,9 @@ package com.horadrim.staff.ltcd.array;
 import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleEntry;
 
+/*
+ * Tag: 二分查找
+ */
 public class SearchRange {
     public Entry<Integer, Integer> solution(int nums[], int target) {
         if (nums[0] > target || nums[nums.length - 1] < target) {
@@ -30,7 +33,7 @@ public class SearchRange {
         // 二分查找搜索右边界
         while (l <= r) {
             int m = (r - l) / 2 + l;
-            // 寻找左边界所以中间值必须大于target时才搜索左半边
+            // 寻找右边界所以中间值必须大于target时才搜索左半边
             if (nums[m] > target) {
                 r = m - 1;
             } else {

@@ -3,6 +3,9 @@ package com.horadrim.staff.ltcd.dp;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/*
+ * Tag: 单调栈
+ */
 public class TrapRain {
     public int solutionI(int [] height) {
         int rain = 0;
@@ -61,21 +64,24 @@ public class TrapRain {
         Deque<Integer> stack = new LinkedList<Integer>();
         int n = height.length;
         for (int i = 0; i < n; ++i) {
+            // 当当前高度大于栈中的高度且栈不为空时
             while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
-                // 获取当前高度左边的高度，也就是底部的
+                // 从队列的头部获取当前高度左边的高度，也就是底部的
                 int top = stack.pop();
 
                 if (stack.isEmpty()) {
                     break;
                 }
 
-                // 获取底部左边的高度，也就是左边的边缘高度
+                // 从队列的头部获取底部左边的高度，也就是左边的边缘高度
                 int left = stack.peek();
-                // 极端宽度
+                // 计算极端宽度
                 int currWidth = i - left - 1;
                 int currHeight = Math.min(height[left], height[i]) - height[top];
                 rain += currWidth * currHeight;
             }
+
+            // 将当前高度的index插入栈的头部，每当高度小于栈中的高度时
             stack.push(i);
         }
 

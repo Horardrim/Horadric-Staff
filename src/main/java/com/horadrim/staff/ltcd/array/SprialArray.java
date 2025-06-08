@@ -62,12 +62,13 @@ public class SprialArray {
             }
 
             // 此时需要遍历当前层的底部和左边的元素
+            // left == right 或者 top == bottom的时候，说明已经遍历到最后一圈了
             if (left < right && top < bottom) {
-                // 遍历底部的元素
+                // 由右往左遍历底部的元素
                 for (int column = right - 1; column > left; column--) {
                     order[index++] = array[bottom][column];
                 }
-                // 遍历左边的元素
+                // 由下往上遍历左边的元素
                 for (int row = bottom; row > top; row--) {
                     order[index++] = array[row][left];
                 }
