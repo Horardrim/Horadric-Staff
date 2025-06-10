@@ -18,4 +18,10 @@ public class LongestSubStringLengthTest {
         LongestSubStringLength testInc = new LongestSubStringLength();
         Assertions.assertEquals(3, testInc.solution("pwwkew"));
     }
+
+    @Test
+    public void normalTestIII() {
+        LongestSubStringLength testInc = new LongestSubStringLength();
+        Assertions.assertEquals(4, testInc.solution("awake"));
+    }
 }
