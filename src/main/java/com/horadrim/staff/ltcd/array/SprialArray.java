@@ -56,7 +56,7 @@ public class SprialArray {
                 order[index++] = array[top][column];
             }
 
-            // 由上向下遍历
+            // 由上向下遍历，row = top + 1因为array[top][column]已经遍历过
             for (int row = top + 1; row <= bottom; row++) {
                 order[index++] = array[row][right];
             }
@@ -64,7 +64,7 @@ public class SprialArray {
             // 此时需要遍历当前层的底部和左边的元素
             // left == right 或者 top == bottom的时候，说明已经遍历到最后一圈了
             if (left < right && top < bottom) {
-                // 由右往左遍历底部的元素
+                // 由右往左遍历底部的元素，同样column = right - 1因为array[row][right]已经遍历过
                 for (int column = right - 1; column > left; column--) {
                     order[index++] = array[bottom][column];
                 }
