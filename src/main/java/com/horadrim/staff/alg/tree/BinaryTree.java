@@ -365,7 +365,7 @@ public class BinaryTree {
             data = value;
         }
 
-        static public BinaryTreeNode buildTreeByPreorderAndInorder(
+        static private BinaryTreeNode buildTreeByPreorderAndInorder(
             BinaryTree tree,
             int [] preorder, int [] inorder,
             Map<Integer, Integer> indexMap,
@@ -395,7 +395,7 @@ public class BinaryTree {
             return root;
         }
 
-        static public BinaryTreeNode buildTreeByPostorderAndInorder(
+        static private BinaryTreeNode buildTreeByPostorderAndInorder(
             BinaryTree tree,
             int [] postorder, int [] inorder,
             Map<Integer, Integer> indexMap,
