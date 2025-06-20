@@ -293,7 +293,21 @@ public class BinaryTree {
         int [] postorder, int [] inorder) {
 
         if (postorder.length == inorder.length) {
+            Map<Integer, Integer> indexMap = new HashMap<>();
+            for (int i = 0; i < inorder.length; ++i) {
+                indexMap.put(inorder[i], i);
+            }
 
+            BinaryTree tree = new BinaryTree();
+            tree.root = BinaryTreeNode.buildTreeByPostorderAndInorder(
+                tree,
+                postorder, inorder,
+                indexMap,
+                0, postorder.length - 1,
+                0, inorder.length - 1
+            );
+
+            return tree;
         }
         return null;
     }
@@ -379,6 +393,39 @@ public class BinaryTree {
                 preoderLeft + leftSubtreeSize + 1, preoderRight,
                 inorder_root + 1, inorderRight);
             return root;
+        }
+
+        static public BinaryTreeNode buildTreeByPostorderAndInorder(
+            BinaryTree tree,
+            int [] postorder, int [] inorder,
+            Map<Integer, Integer> indexMap,
+            int postoderLeft, int postoderRight,
+            int inorderLeft, int inorderRight) {
+
+            if (inorderLeft > inorderRight) {
+                return null;
+            }
+
+            int inorder_root = indexMap.get(postorder[postoderRight]);
+            int leftSubtreeSize = inorder_root - inorderLeft;
+            BinaryTreeNode root = tree.new BinaryTreeNode(postorder[postoderRight]);
+
+            root.left = buildTreeByPostorderAndInorder(
+                tree,
+                postorder, inorder,
+                indexMap,
+                postoderLeft, postoderLeft + leftSubtreeSize - 1,
+                inorderLeft, inorder_root - 1);
+
+            root.right = buildTreeByPostorderAndInorder(
+                tree,
+                postorder, inorder,
+                indexMap,
+                postoderLeft + leftSubtreeSize, postoderRight - 1,
+                inorder_root + 1, inorderRight);
+
+            return root;
+
         }
 
         public void insertLeft(BinaryTreeNode child) {
