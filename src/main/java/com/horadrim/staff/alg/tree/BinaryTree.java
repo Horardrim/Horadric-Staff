@@ -280,7 +280,7 @@ public class BinaryTree {
                 preorder, inorder,
                 indexMap,
                 0, preorder.length - 1,
-                0, preorder.length - 1
+                0, inorder.length - 1
             );
 
             return tree;
@@ -377,7 +377,7 @@ public class BinaryTree {
                 tree, preorder, inorder,
                 indexMap,
                 preoderLeft + leftSubtreeSize + 1, preoderRight,
-                inorder_root - 1, inorderRight);
+                inorder_root + 1, inorderRight);
             return root;
         }
 
