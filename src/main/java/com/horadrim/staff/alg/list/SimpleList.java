@@ -1,5 +1,7 @@
 package com.horadrim.staff.alg.list;
 
+import lombok.var;
+
 public class SimpleList {
     public SimpleList() {
         count = 0;
@@ -110,6 +112,25 @@ public class SimpleList {
         }
 
         return slow;
+    }
+
+    /*
+     * 链表是否与另外一个链表相交
+     */
+    public boolean intersectsWith(SimpleList other) {
+        if (head == other.head) {
+            return false;
+        }
+
+        SimpleListNode pA = head.next;
+        SimpleListNode pB = other.head.next;
+
+        while (pA != pB) {
+            pA = (pA == null) ? other.head.next : pA.next;
+            pB = (pB == null) ? head.next : pB.next;
+        }
+
+        return pA != null;
     }
 
     private SimpleListNode head;
