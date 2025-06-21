@@ -1,7 +1,5 @@
 package com.horadrim.staff.alg.list;
 
-import lombok.var;
-
 public class SimpleList {
     public SimpleList() {
         count = 0;
