@@ -2,7 +2,9 @@ package com.horadrim.staff.alg.tree;
 
 import java.util.Deque;
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Queue;
 import java.util.Set;
@@ -192,7 +194,7 @@ public class BinaryTree {
     }
 
     /*
-     * 获取二叉树的层数
+     * 获取二叉树的层数，通过每层加入seperator来分开树的每一层
      */
     public int level() {
         if (root == null) {
@@ -229,6 +231,9 @@ public class BinaryTree {
 
     }
 
+    /*
+     * 获取二叉树的层数，通过队列中所有节点都是null，则当前层数-1
+     */
     public final int level(int overload) {
         if (root == null) {
             return 0;
@@ -258,6 +263,53 @@ public class BinaryTree {
         }
 
         return level;
+    }
+
+    static public BinaryTree buildTreeByPreorderAndInorder(
+        int [] preorder, int [] inorder) {
+
+        if (preorder.length == inorder.length) {
+            Map<Integer, Integer> indexMap = new HashMap<>();
+            for (int i = 0; i < inorder.length; ++i) {
+                indexMap.put(inorder[i], i);
+            }
+
+            BinaryTree tree = new BinaryTree();
+            tree.root = BinaryTreeNode.buildTreeByPreorderAndInorder(
+                tree,
+                preorder, inorder,
+                indexMap,
+                0, preorder.length - 1,
+                0, inorder.length - 1
+            );
+
+            return tree;
+        }
+
+        return null;
+    }
+
+    static public BinaryTree buildTreeByPostorderAndInorder(
+        int [] postorder, int [] inorder) {
+
+        if (postorder.length == inorder.length) {
+            Map<Integer, Integer> indexMap = new HashMap<>();
+            for (int i = 0; i < inorder.length; ++i) {
+                indexMap.put(inorder[i], i);
+            }
+
+            BinaryTree tree = new BinaryTree();
+            tree.root = BinaryTreeNode.buildTreeByPostorderAndInorder(
+                tree,
+                postorder, inorder,
+                indexMap,
+                0, postorder.length - 1,
+                0, inorder.length - 1
+            );
+
+            return tree;
+        }
+        return null;
     }
 
     private boolean checkSubTree(BinaryTreeNode parentTreeNode, BinaryTreeNode childTreeNode) {
@@ -311,6 +363,69 @@ public class BinaryTree {
             left = null;
             right = null;
             data = value;
+        }
+
+        static private BinaryTreeNode buildTreeByPreorderAndInorder(
+            BinaryTree tree,
+            int [] preorder, int [] inorder,
+            Map<Integer, Integer> indexMap,
+            int preoderLeft, int preoderRight,
+            int inorderLeft, int inorderRight) {
+
+            if (preoderLeft > preoderRight) {
+                return null;
+            }
+
+            int preorderRoot = preoderLeft;
+            int inorder_root = indexMap.get(preorder[preorderRoot]);
+            BinaryTreeNode root = tree.new BinaryTreeNode(preorder[preorderRoot]);
+
+            int leftSubtreeSize = inorder_root - inorderLeft;
+            root.left = buildTreeByPreorderAndInorder(
+                tree, preorder, inorder, 
+                indexMap,
+                preoderLeft + 1, preoderLeft + leftSubtreeSize, 
+                inorderLeft, inorder_root - 1);
+
+            root.right = buildTreeByPreorderAndInorder(
+                tree, preorder, inorder,
+                indexMap,
+                preoderLeft + leftSubtreeSize + 1, preoderRight,
+                inorder_root + 1, inorderRight);
+            return root;
+        }
+
+        static private BinaryTreeNode buildTreeByPostorderAndInorder(
+            BinaryTree tree,
+            int [] postorder, int [] inorder,
+            Map<Integer, Integer> indexMap,
+            int postoderLeft, int postoderRight,
+            int inorderLeft, int inorderRight) {
+
+            if (inorderLeft > inorderRight) {
+                return null;
+            }
+
+            int inorder_root = indexMap.get(postorder[postoderRight]);
+            int leftSubtreeSize = inorder_root - inorderLeft;
+            BinaryTreeNode root = tree.new BinaryTreeNode(postorder[postoderRight]);
+
+            root.left = buildTreeByPostorderAndInorder(
+                tree,
+                postorder, inorder,
+                indexMap,
+                postoderLeft, postoderLeft + leftSubtreeSize - 1,
+                inorderLeft, inorder_root - 1);
+
+            root.right = buildTreeByPostorderAndInorder(
+                tree,
+                postorder, inorder,
+                indexMap,
+                postoderLeft + leftSubtreeSize, postoderRight - 1,
+                inorder_root + 1, inorderRight);
+
+            return root;
+
         }
 
         public void insertLeft(BinaryTreeNode child) {
