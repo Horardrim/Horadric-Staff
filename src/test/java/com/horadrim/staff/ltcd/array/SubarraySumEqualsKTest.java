@@ -15,7 +15,7 @@ public class SubarraySumEqualsKTest {
         Assertions.assertEquals(2, result);
     }
 
-        @Test
+    @Test
     public void normalTestII() {
         int nums [] = new int[] {3, 4, 7, 2, -3, 1, 4, 2};
         int result = new SubarraySumEqualsK().solution(nums, 7);
