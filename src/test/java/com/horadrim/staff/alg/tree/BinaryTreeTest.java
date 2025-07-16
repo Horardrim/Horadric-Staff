@@ -41,4 +41,20 @@ public class BinaryTreeTest {
         BinaryTree tree = BinaryTree.buildTreeByPostorderAndInorder(postorder, inorder);
         Assertions.assertEquals(9, tree.root().data());
     }
+
+    @Test
+    public void depthTest_normalTest() {
+        int [] postorder = new int[] {9, 15, 7, 20, 3};
+        int [] inorder = new int[] {9, 3, 15, 20, 7};
+        BinaryTree tree = BinaryTree.buildTreeByPostorderAndInorder(postorder, inorder);
+        Assertions.assertEquals(2, tree.minDepth());
+
+        Assertions.assertEquals(2, tree.root().minDepth());
+        Assertions.assertEquals(1, tree.root().getLeft().minDepth());
+
+        Assertions.assertEquals(3, tree.level());
+
+        BinaryTree emptyTree = new BinaryTree();
+        Assertions.assertEquals(0, emptyTree.minDepth());
+    }
 }
