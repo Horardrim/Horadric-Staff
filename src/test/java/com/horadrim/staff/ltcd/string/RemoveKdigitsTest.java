@@ -1,0 +1,5 @@
+package com.horadrim.staff.ltcd.string;
+
+public class RemoveKdigitsTest {
+    feafeae
+}
