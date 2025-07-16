@@ -265,6 +265,10 @@ public class BinaryTree {
         return level;
     }
 
+    public int minDepth() {
+        return Objects.isNull(root) ? 0 : root._minDepth(0);
+    }
+
     static public BinaryTree buildTreeByPreorderAndInorder(
         int [] preorder, int [] inorder) {
 
@@ -363,6 +367,22 @@ public class BinaryTree {
             left = null;
             right = null;
             data = value;
+        }
+
+        public int minDepth() {
+            if (Objects.isNull(left) || Objects.isNull(right)) {
+                return 1;
+            } else {
+                return Math.min(left._minDepth(1), right._minDepth(1));
+            }
+        }
+
+        private int _minDepth(int depth) {
+            if (Objects.isNull(left) || Objects.isNull(right)) {
+                return depth + 1;
+            } else {
+                return Math.min(left._minDepth(depth + 1), right._minDepth(depth + 1));
+            }
         }
 
         static private BinaryTreeNode buildTreeByPreorderAndInorder(
