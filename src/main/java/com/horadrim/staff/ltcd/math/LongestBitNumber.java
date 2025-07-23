@@ -1,5 +1,8 @@
 package com.horadrim.staff.ltcd.math;
 
+/*
+ * 对于给定的十进制整数 n，求解其二进制表示中，最长连续 1 段的长度。
+ */
 public class LongestBitNumber {
     int solution(int N) {
         int max = 0;
