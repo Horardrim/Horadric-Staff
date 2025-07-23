@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class IsSubSequenceTest {
     @Test
-    void test() {
+    public void test() {
         IsSubSequence isSubSequence = new IsSubSequence();
         boolean solution = isSubSequence.solution("abc", "ahbgdc");
         Assertions.assertTrue(solution);
@@ -16,7 +16,7 @@ public class IsSubSequenceTest {
     }
 
     @Test
-    void duplicate() {
+    public void duplicate() {
         IsSubSequence isSubSequence = new IsSubSequence();
         boolean solution = isSubSequence.solution("adc", "ahbagdc");
         Assertions.assertTrue(solution);
@@ -24,7 +24,7 @@ public class IsSubSequenceTest {
     }
 
     @Test
-    void negative() {
+    public void negative() {
         IsSubSequence isSubSequence = new IsSubSequence();
         boolean solution = isSubSequence.solution("axc", "ahbagdc");
         Assertions.assertFalse(solution);
