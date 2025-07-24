@@ -29,7 +29,8 @@ import java.util.Stack;
  */
 public class RemoveKdigits {
     String solution(String num, int k) {
-                Deque<Character> deque = new LinkedList<Character>();
+
+        Deque<Character> deque = new LinkedList<Character>();
         int length = num.length();
         for (int i = 0; i < length; ++i) {
             char digit = num.charAt(i);
