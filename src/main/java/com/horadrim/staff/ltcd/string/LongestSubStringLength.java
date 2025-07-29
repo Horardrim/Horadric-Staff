@@ -2,7 +2,11 @@ package com.horadrim.staff.ltcd.string;
 
 import java.util.HashSet;
 import java.util.Set;
-
+/*
+ * 无重复字符的最长子串
+ * 
+ * Tag: 快慢指针
+ */
 public class LongestSubStringLength {
     public int wrongSolution(String str) {
         int globalMaxLen = 0;
