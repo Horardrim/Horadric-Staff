@@ -1,7 +1,7 @@
 package com.horadrim.staff.ltcd.array;
 
 /*
- * 给定一个有序数组 nums ，请你 原地 删除重复出现的元素，使得出现次数超过两次的元素只出现两次 ，返回删除后数组的新长度。
+ * 给定一个有序数组 nums，删除重复出现的元素，使得出现次数超过两次的元素只出现两次，返回删除后数组的新长度。
  * Tag: 快慢指针，荷兰国旗问题
  */
 public class RemoveDupII {
