@@ -21,4 +21,14 @@ public class SubarraySumEqualsKTest {
         int result = new SubarraySumEqualsK().solution(nums, 7);
         Assertions.assertEquals(4, result);
     }
+
+    @Test
+    public void normalTestIII() {
+        int nums [] = new int[] {4, -4, 4};
+        int result = new SubarraySumEqualsK().solution(nums, 4);
+        Assertions.assertEquals(3, result);
+        /*
+         * 结果为 {4}， {4}（最后一个4），{4， -4， 4}
+         */
+    }
 }
