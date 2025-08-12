@@ -37,7 +37,8 @@ public class AlternatingSubarray {
             if (nums[i] - nums[firstIndex] == (length - 1) % 2) {
                 res = Math.max(res, length);
             } else {
-                // 处理[2, 3, 2, 3, 2, 3, 4]这样的情况此时作为基点的firstIndex需要更新
+                // 处理[2, 3, 2, 3, 2, 3, 4, 3, 4, 3, 4, 3, 4]这样的情况此时作为基点的firstIndex需要更新
+                // i为偶数时nums[i] - nums[i - 1] = 1仍然可以成立
                 if (nums[i] - nums[i - 1] == 1) {
                     firstIndex = i - 1;
                     res = Math.max(res, 2);
