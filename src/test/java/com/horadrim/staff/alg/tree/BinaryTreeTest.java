@@ -57,4 +57,30 @@ public class BinaryTreeTest {
         BinaryTree emptyTree = new BinaryTree();
         Assertions.assertEquals(0, emptyTree.minDepth());
     }
+
+    @Test
+    public void lowestCommonAncestor_normalTest() {
+        int [] preorder = new int[] {3, 9, 20, 15, 7};
+        int [] inorder = new int[] {9, 3, 15, 20, 7};
+        BinaryTree tree = BinaryTree.buildTreeByPreorderAndInorder(preorder, inorder);
+        BinaryTree.BinaryTreeNode left = tree.root().getRight().getLeft();
+        BinaryTree.BinaryTreeNode right = tree.root().getRight().getRight();
+        BinaryTree.BinaryTreeNode expectAncestor = tree.root().getRight();
+        BinaryTree.BinaryTreeNode trueAncestor = tree.lowestCommonAncestor(left, right);
+        Assertions.assertEquals(expectAncestor, trueAncestor);
+        Assertions.assertEquals(20, trueAncestor.data());
+    }
+
+    @Test
+    public void lowestCommonAncestor_parentNodesTest() {
+        int [] preorder = new int[] {3, 9, 20, 15, 7};
+        int [] inorder = new int[] {9, 3, 15, 20, 7};
+        BinaryTree tree = BinaryTree.buildTreeByPreorderAndInorder(preorder, inorder);
+        BinaryTree.BinaryTreeNode left = tree.root().getRight().getLeft();
+        BinaryTree.BinaryTreeNode right = tree.root().getRight();
+        BinaryTree.BinaryTreeNode expectAncestor = tree.root().getRight();
+        BinaryTree.BinaryTreeNode trueAncestor = tree.lowestCommonAncestor(right, left);
+        Assertions.assertEquals(expectAncestor, trueAncestor);
+        Assertions.assertEquals(20, trueAncestor.data());
+    }
 }

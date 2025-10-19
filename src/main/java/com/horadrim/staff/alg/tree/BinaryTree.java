@@ -42,9 +42,6 @@ public class BinaryTree {
      * 两个节点的最低公共祖先节点
      */
     public BinaryTreeNode lowestCommonAncestor(BinaryTreeNode p, BinaryTreeNode q) {
-        if (p == null || q == null) {
-            return null;
-        }
         return lowestCommonAncestor(root, p, q);
     }
 
