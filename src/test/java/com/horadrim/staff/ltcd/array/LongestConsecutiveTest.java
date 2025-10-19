@@ -20,4 +20,14 @@ public class LongestConsecutiveTest {
         int result = new LongestConsecutive().solution(nums);
         Assertions.assertEquals(3, result);
     }
+
+    @Test
+    public void arrayContainsTwoSimilarSubArraysTest() {
+        //     |----    array 1 ----|
+        //     [5,   6,   7,   8,   9,   10,   11,   12,   13]
+        //                |----         array 2         ----|         
+        int nums [] = new int[] {9, 5, 6, 7, 8, 11, 32, 9, 12, 10, 8, 7, 13};
+        int result = new LongestConsecutive().solution(nums);
+        Assertions.assertEquals(9, result);
+    }
 }
