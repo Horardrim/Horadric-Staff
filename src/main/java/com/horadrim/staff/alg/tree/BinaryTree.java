@@ -376,7 +376,6 @@ public class BinaryTree {
                 return left._minDepth(1);
             }
             else {
-                System.out.println("Both not null");
                 return Math.min(left._minDepth(1), right._minDepth(1));
             }
         }
