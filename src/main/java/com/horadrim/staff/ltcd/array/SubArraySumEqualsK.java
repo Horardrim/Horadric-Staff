@@ -17,7 +17,7 @@ import java.util.Map;
  * 
  * Tag: 前缀和
  */
-public class SubarraySumEqualsK {
+public class SubArraySumEqualsK {
     int solution(int [] nums, int k) {
         int result = 0;
         int pre = 0;

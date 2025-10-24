@@ -367,17 +367,7 @@ public class BinaryTree {
         }
 
         public int minDepth() {
-            if (Objects.isNull(left) && Objects.isNull(right)) {
-                System.out.println("Both null");
-                return 0;
-            } else if (Objects.isNull(left)) {
-                return right._minDepth(1);
-            } else if (Objects.isNull(right)) {
-                return left._minDepth(1);
-            }
-            else {
-                return Math.min(left._minDepth(1), right._minDepth(1));
-            }
+            return minDepth(0);
         }
 
         private int _minDepth(int depth) {
