@@ -367,7 +367,7 @@ public class BinaryTree {
         }
 
         public int minDepth() {
-            return minDepth(0);
+            return _minDepth(0);
         }
 
         private int _minDepth(int depth) {
