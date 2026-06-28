@@ -27,4 +27,11 @@ public class JumpGameTest {
         boolean result = new JumpGame().solution(nums);
         Assertions.assertTrue(result);
     }
+
+    @Test
+    public void unreachableTest() {
+        int [] nums = new int[] {3, 2, 1, 0, 4};
+        boolean result = new JumpGame().solution(nums);
+        Assertions.assertTrue(!result);
+    }
 }
